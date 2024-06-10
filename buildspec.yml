@@ -1,0 +1,26 @@
+version: 0.2
+
+env:
+  variables:
+    parameters-store:
+      DOCKER_REGISTRY_USERNAME: /myapp/docker-cred/username
+      DOCKER_REGISTRY_PASSWORD: /myapp/docker-cred/password
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+
+  pre_build:
+    commands:
+      - echo "No pre-build commands"
+  build:
+    commands:
+      - echo "building docker image"
+      - docker build -t akshat8630/ecommerce:latest .
+  post_build:
+    commands:
+      - echo "build successful"
+      - echo "pushing docker image to docker hub"
+      - docker push akshat8630/ecommerce:latest
+      - echo "docker image pushed successfully"
