@@ -5,8 +5,8 @@ env:
     IMAGE_REPO_NAME: "akshat8630/ecommerce"
     IMAGE_TAG: "latest"
   parameter-store:
-    DOCKER_REGISTRY_USERNAME: "myapp/docker-cred/username"
-    DOCKER_REGISTRY_PASSWORD: "myapp/docker-cred/password"
+    DOCKER_REGISTRY_USERNAME: /myapp/docker-cred/username
+    DOCKER_REGISTRY_PASSWORD: /myapp/docker-cred/password
 
 phases:
   install:
