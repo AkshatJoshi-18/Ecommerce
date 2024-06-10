@@ -4,7 +4,7 @@ env:
   variables:
     IMAGE_REPO_NAME: "akshat8630/ecommerce"
     IMAGE_TAG: "latest"
-  secrets-manager:
+  parameter-store:
     DOCKER_REGISTRY_USERNAME: "myapp/docker-cred/username"
     DOCKER_REGISTRY_PASSWORD: "myapp/docker-cred/password"
 
