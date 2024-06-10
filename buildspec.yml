@@ -1,5 +1,13 @@
 version: 0.2
 
+env:
+  variables:
+    IMAGE_REPO_NAME: "akshat8630/ecommerce"
+    IMAGE_TAG: "latest"
+  secrets-manager:
+    DOCKER_REGISTRY_USERNAME: "myapp/docker-cred/username"
+    DOCKER_REGISTRY_PASSWORD: "myapp/docker-cred/password"
+
 phases:
   install:
     runtime-versions:
@@ -7,14 +15,15 @@ phases:
 
   pre_build:
     commands:
-      - echo "No pre-build commands"
+      - echo Logging in to Docker Hub...
+      - echo ${DOCKER_REGISTRY_PASSWORD} | docker login -u ${DOCKER_REGISTRY_USERNAME} --password-stdin
   build:
     commands:
       - echo "building docker image"
-      - docker build -t akshat8630/ecommerce:latest .
+      - docker build -t ${IMAGE_REPO_NAME}:${IMAGE_TAG} .
   post_build:
     commands:
       - echo "build successful"
       - echo "pushing docker image to docker hub"
-      - docker push akshat8630/ecommerce:latest
+      - docker push ${IMAGE_REPO_NAME}:${IMAGE_TAG}
       - echo "docker image pushed successfully"
