@@ -1,11 +1,5 @@
 version: 0.2
 
-env:
-  variables:
-    parameters-store:
-      DOCKER_REGISTRY_USERNAME: /myapp/docker-cred/username
-      DOCKER_REGISTRY_PASSWORD: /myapp/docker-cred/password
-
 phases:
   install:
     runtime-versions:
